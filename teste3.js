@@ -1,15 +1,14 @@
-var data =  require("./fakeData");
+var { data } =  require("./fakeData");
 
 module.exports = function(req, res) {
-  
-    var name =  req.query.name;
+  const { name } = req.query;
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            data[i] = null;
-        }
-    }
+  const userIndex = data.findIndex(user => user.name === name);
 
-    res.send("success");
+  if (userIndex !== -1) {
+    data.splice(userIndex, 1);
+    return res.send("Usuário removido com sucesso");
+  }
 
+  return res.status(404).send("Usuário não encontrado");
 };

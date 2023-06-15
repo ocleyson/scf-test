@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+const { checkPermissions } = require("./checkPermissions");
 
 var teste1 = require("./teste1");
 var teste2 = require("./teste2");
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(checkPermissions);
 
 app.get('/', function(req, res){
   res.send(`get user/ </br>
