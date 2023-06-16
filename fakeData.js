@@ -6,7 +6,7 @@ const data  =  [
         reads: 0,
         permissions: {
             canDelete: true,
-            canUpdate: false
+            canUpdate: true
         }
     }
 ]

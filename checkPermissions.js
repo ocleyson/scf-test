@@ -1,9 +1,9 @@
 var { data } =  require("./fakeData");
 
 function checkPermissions(req, res, next) {
-    const { id } = req.query;
+    const { tokenId } = req.query;
   
-    const user = data.find((user) => user.id == id);
+    const user = data.find((user) => user.id == tokenId);
   
     if (!user) {
       return res.status(404).send("Usuário não encontrado");
